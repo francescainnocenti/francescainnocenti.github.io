@@ -1,1 +1,453 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script>
+//chrome fix -->
+    $(document).bind('mobileinit',function(){
+        $.mobile.changePage.defaults.changeHash = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.pushStateEnabled = false;
+    });
+</script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+
+p {
+
+  padding: 5px 5px 5px 10px;
+  background-color: white;
+}
+#containerMenu {
+	
+	width: 100%;
+    margin: 0 auto; 
+}
+#galleryDiv {
+	text-align: center;
+	overflow: auto;
+}
+.animate
+{
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+
+.action-button
+{
+	width: 10% !important;
+	height: 80px !important;
+	position: relative;
+	padding: 10px 40px;
+	margin: 0px 10px 25px 0px;
+	border-radius: 50% !important;
+  border-radius: 10px;
+  float: left;
+  font-family: 'Pacifico', cursive;
+	color: #FFF !important;
+	text-decoration: none;
+	background:url('images/menu/farfalla2.jpg') center center no-repeat; 
+  background-size: 35%;
+}
+
+.blue
+{
+	background-color: #3498DB !important;
+	border-bottom: 5px solid #2980B9 !important;
+	text-shadow: 0px -2px #2980B9 !important;
+}
+
+
+.action-button:active
+{
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
+}
+.action-button.matita:hover {
+	background:url('images/menu/matita.png') center center no-repeat; 
+    background-size: 55%;
+    background-color: white !important;
+    color: #946ab1 !important; 
+}
+.action-button.fiori:hover {
+	background:url('images/menu/Fiori.jpg') center center no-repeat; 
+    background-size: 200%;
+    background-color: white !important;
+    color: #946ab1 !important; 
+}
+.action-button.motori:hover {
+	background:url('images/menu/Motori.jpg') center center no-repeat; 
+    background-size: 200%;
+    background-color: white !important;
+    color: #946ab1 !important; 
+}
+.action-button.occhi:hover {
+	background:url('images/menu/Occhio.jpg') center center no-repeat; 
+    background-size: 100%;
+    background-color: white !important;
+    color: #946ab1 !important; 
+}
+.action-button.paesaggi:hover {
+	background:url('images/menu/Paesaggi.jpg') center center no-repeat; 
+    background-size: 125%;
+    background-color: white !important;
+    color: #946ab1 !important; 
+}
+.action-button.vasifiori:hover {
+  background:url('images/menu/Vasifiori.jpg') center center no-repeat; 
+    background-size: 125%;
+    background-color: white !important;
+    color: #946ab1 !important; 
+}
+
+.titoli {
+  display: inline;
+}
+#galleryDiv {
+  overflow: hidden;
+}
+.pages {
+  background-color: #dbc3db;
+}
+.custom-navbar ul li a {
+    background: #d2be96; /* Old browsers */
+    background: linear-gradient( #d2be96,#946ab1 ) repeat scroll 0 0 #d2be96 !important;
+    background: -moz-linear-gradient( #d2be96,#946ab1 ) repeat scroll 0 0 #d2be96 !important; /* FF3.6+ */
+    background: -webkit-linear-gradient( #d2be96,#946ab1 ) repeat scroll 0 0 #d2be96 !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient( #d2be96,#946ab1 ) repeat scroll 0 0 #d2be96 !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient( #d2be96,#946ab1 ) repeat scroll 0 0 #d2be96 !important; /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2be96', endColorstr='#946ab1',GradientType=0 ); /* IE6-9 */
+}
+.custom-navbar ul li a.ui-btn-active {
+    background: linear-gradient(#5393C5, #6FACD5) repeat scroll 0 0 #5393C5 !important;
+    background: #67497a; /* Old browsers */
+    background: linear-gradient(#5393C5, #6FACD5) repeat scroll 0 0 #5393C5 !important; /* FF3.6+ */
+    background: -webkit-linear-gradient(#5393C5, #6FACD5) repeat scroll 0 0 #5393C5 !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(#5393C5, #6FACD5) repeat scroll 0 0 #5393C5 !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(#5393C5, #6FACD5) repeat scroll 0 0 #5393C5 !important; /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5393C5', endColorstr='#6FACD5',GradientType=0 ); /* IE6-9 */
+}
+.footerBottom {
+	position: absolute;
+  bottom: 0;
+	width: 100%;
+	font-size: 80%;
+}
+.ui-title {
+	background-color: #ead5ad;
+	margin: 0 !important;
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url(Airstream-webfont.woff);
+}
+
+div {
+	font-family: myFirstFont, Helvetica, "Times New Roman";
+	font-size: 130%;
+}
+img {
+    vertical-align: middle;
+}
+
+#indietro {
+    
+    background-color: #b5a4eb;
+    background-image: #f0f0f0 url('images/left-arrow.svg') !important;
+    background-position: 8px 8px !important;
+    background-repeat: no-repeat !important;
+    
+}​
+
+</style>
+</head>
+<body>
+
+
+<!-- <img src="images/left-arrow.svg" width="50%" height="10%"> -->
+<img src="images/left-arrow.svg" id="indietro" class="ui-btn ui-shadow ui-corner-all" style="opacity: 0.7; border: 2px solid;  border-color: black; display: none; z-index: 99999; width: 10% ; position: fixed; height: 5%; " />
+
+<!--pagina principale-->
+<div data-role="page" id="main" class="pages">
+  <div data-role="header">
+		<h1><img src="farfalla.jpg" alt="farfalla" height="45px" width="45px"> Francesca Innocenti Website<img src="farfalla.jpg" alt="farfalla" height="45px" width="45px" style="margin-left:5px;"></h1>
+		<div data-role='navbar' data-iconpos='bottom' class="custom-navbar">
+				<ul>
+						<li><a href='#main'  class="ui-btn-active ui-state-persist"  data-icon='home'>Home</a></li>
+						<li><a href='#due' data-icon='heart'>Su di me</a></li>
+						<li class="leMieCose"><a href='#tre' data-icon='camera'>Le mie cose</a></li>
+						<li><a href='#quattro' data-icon='cloud'>I miei pensieri</a></li>
+						<li><a href='#cinque' data-icon='comment'>Contatti</a></li>
+				</ul>
+		</div><!-- /navbar -->
+  </div>
+
+
+  <div data-role="#main" class="ui-content">
+    <p class="titoli">Benvenuti nel mio sito!</p>
+
+  </div>
+
+  <div data-role="footer" class="footerBottom">
+    <h1>Copyright © 2016 Designed By Giorgio. All rights reserved</h1>
+  </div>
+</div>
+<!--fine pagina principale-->
+
+<!--pagina 2-->
+<div data-role="page" id="due" class="pages">
+  <div data-role="header">
+    <h1><img src="farfalla.jpg" alt="farfalla" height="45px" width="45px"> Francesca Innocenti Website<img src="farfalla.jpg" alt="farfalla" height="45px" width="45px" style="margin-left:5px;"></h1>
+		<div data-role='navbar' data-iconpos='bottom' class="custom-navbar">
+				<ul>
+						<li><a href='#main' data-icon='home'>Home</a></li>
+						<li><a href='#due' class="ui-btn-active ui-state-persist" data-icon='heart'>Su di me</a></li>
+						<li class="leMieCose"><a href='#tre' data-icon='camera'>Le mie cose</a></li>
+						<li><a href='#quattro' data-icon='cloud'>I miei pensieri</a></li>
+						<li><a href='#cinque' data-icon='comment'>Contatti</a></li>
+				</ul>
+		</div><!-- /navbar -->
+  </div>
+
+  <div data-role="#main" class="ui-content">
+    <!-- <p class="titoli">Qua trovi tante cosine su di me</p> -->
+    
+    <p><img src="images/Foto.jpg" class="ui-shadow ui-corner-all"alt="francesca innocenti" style="float: right; height: 280px "><u>Francesca Innocenti</u> nasce a Ravenna il 23 gennaio del 1987.
+      Diplomata all’Istituto d’Arte per il Mosaico Gino Severini a Ravenna nel 2006, in seguito frequentera l’Accademia di Belle Arti della stessa citta, diplomandosi nel Triennio Sperimentale in  Mosaico nel 2009 e al Biennio Specialistico, in Arte e Restauro musivo nel 2011.
+    <br><br>
+      Nella sua esperienza scolastica sara discente di personalita di alto livello professionale e artistico nell’ambito musivo contemporaneo come Marco De Luca, Adriana Morelli, Felice Nittolo, Luciana Notturni e Daniele Strada.
+      Ha sperimentato l’attivita di atelier per un periodo di due mesi presso la Cooperativa Mosaicisti di Ravenna, sotto la guida del artista mosaicista Marco Santi.
+    </p>
+     <p>
+      <ul><u>Mostre:</u>
+        <li>Mostra di fine anno, titolo della mostra “Mosaico di Cuba”, a cura di: Chiara Canali Ruslan Hernandez, Frency Fedrnandez e Andres D. Abreu  Accademia di Belle Arti Ravenna 2008</li>
+        <li>Mostra di fine anno, titolo della mostra “L’Oralita”,a cura di: Tahar Lamri Accademia di Belle Arti Ravenna 2009</li>
+        <li>Corso scolastico di realizzazione di lavori a mosaico titolo della mostra “Totem musivi“, a cura di: Dusciana Bravura  commissionati dalla provincia di Ravenna 2011</li>
+        <li>Mostra, titolo della mostra “Micro Mosaici”, a cura di: Alberto Zorzi MAR Museo d’arte della provincia di Ravenna 2012  </li>
+      </ul>
+    </p>
+    <br>
+  </div>
+
+  <div data-role="footer" class="footerBottom">
+    <h1>Copyright © 2016 Designed By Giorgio. All rights reserved</h1>
+  </div>
+</div>
+<!--fine pagina 2-->
+
+<!--pagina 3-->
+<div data-role="page" id="tre" class="pages">
+  <div data-role="header">
+    <h1><img src="farfalla.jpg" alt="farfalla" height="45px" width="45px"> Francesca Innocenti Website<img src="farfalla.jpg" alt="farfalla" height="45px" width="45px" style="margin-left:5px;"></h1>
+		<div data-role='navbar' data-iconpos='bottom' class="custom-navbar">
+				<ul>
+						<li><a href='#main' data-icon='home'>Home</a></li>
+						<li><a href='#due' data-icon='heart'>Su di me</a></li>
+						<li><a href='#tre' class="ui-btn-active ui-state-persist" data-icon='camera'>Le mie cose</a></li>
+						<li><a href='#quattro' data-icon='cloud'>I miei pensieri</a></li>
+						<li><a href='#cinque' data-icon='comment'>Contatti</a></li>
+				</ul>
+		</div><!-- /navbar -->
+  </div>
+
+  <div data-role="#main" id="galleryDiv"class="ui-content" >
+    <!--<p class="titoli">Tutte le mie creazioni!</p>-->
+     <!-- frameBorder="0" width="100%"-->
+     <div id="containerMenu">
+    <a href="#popupBasicDisegniMatita" data-rel="popup" data-transition="pop" class="action-button shadow animate blue matita"id="button" data-button='DisegniMatita'></a>
+    <a href="#popupBasicFiori" data-rel="popup" data-transition="pop" class="action-button shadow animate blue fiori"id="button1" data-button='Fiori'></a>
+    <a href="#popupBasicMotori" data-rel="popup" data-transition="pop"class="action-button shadow animate blue motori"id="button2" data-button='Motori'></a>
+    <a href="#popupBasicOcchiFigure" data-rel="popup" data-transition="pop"class="action-button shadow animate blue occhi"id="button3" data-button='OcchiFigure'></a>
+   	<a href="#popupBasicPaesaggi" data-rel="popup" data-transition="pop"class="action-button shadow animate blue paesaggi"id="button4" data-button='Paesaggi'></a>
+    <a href="#popupBasicVasiFiori" data-rel="popup" data-transition="pop"class="action-button shadow animate blue vasifiori"id="button5" data-button='VasiFiori'></a>
+   	
+
+    <div data-role="popup" id="popupBasicDisegniMatita" class="popupMenu">
+		<p>Disegni a Matita</p>
+	</div>
+	<div data-role="popup" id="popupBasicFiori" class="popupMenu">
+		<p>Fiori</p>
+	</div>
+	<div data-role="popup" id="popupBasicMotori" class="popupMenu">
+		<p>Motori</p>
+	</div>
+	<div data-role="popup" id="popupBasicOcchiFigure" class="popupMenu">
+		<p>Occhi e Figure</p>
+	</div>
+	<div data-role="popup" id="popupBasicPaesaggi" class="popupMenu">
+		<p>Paesaggi</p>
+	</div>
+  <div data-role="popup" id="popupBasicVasiFiori" class="popupMenu">
+    <p>Vasi di Fiori</p>
+  </div>
+    </div>
+  </div>
+
+  <div data-role="footer" class="footerBottom">
+    <h1>Copyright © 2016 Designed By Giorgio. All rights reserved</h1>
+  </div>
+</div>
+<!-- fine pagina 3-->
+
+<!--pagina 4-->
+<div data-role="page" id="quattro" class="pages">
+  <div data-role="header">
+    <h1><img src="farfalla.jpg" alt="farfalla" height="45px" width="45px"> Francesca Innocenti Website<img src="farfalla.jpg" alt="farfalla" height="45px" width="45px" style="margin-left:5px;"></h1>
+		<div data-role='navbar' data-iconpos='bottom' class="custom-navbar">
+				<ul>
+						<li><a href='#main' data-icon='home'>Home</a></li>
+						<li><a href='#due' data-icon='heart'>Su di me</a></li>
+						<li class="leMieCose"><a href='#tre' data-icon='camera'>Le mie cose</a></li>
+						<li><a href='#quattro' class="ui-btn-active ui-state-persist" data-icon='cloud'>I miei pensieri</a></li>
+						<li><a href='#cinque' data-icon='comment'>Contatti</a></li>
+				</ul>
+		</div><!-- /navbar -->
+  </div>
+
+  <div data-role="#main" class="ui-content">
+    <!-- <p class="titoli">Qua ci vanno le I miei pensieri per l'appunto</p> -->
+    <p>Facciamo che una poetica abbia quattro punti cardinali e che questi siano dominati dalla creativita definita come la capacita di produrre nuove idee, invenzioni, opere d’arte. Dall’immaginazione, come la capacita di saper elaborare liberamente e con fantasia i dati dell’esperienza sensibile ed i pensieri. Dalla fantasia, intesa come quella facolta della mente umana di interpretare liberamente i dati forniti dall’esperienza oppure di saper rappresentare contenuti inesistenti, in immagini. Ed infine dall’inventiva , genialita ricca e fertile, potenza immaginativa e creativa.</p>
+    <p>Ecco una chiave di lettura per dare vita a un opera che intenda restare nel tempo, indelebile come le cose che ci circondano e che superano la materialita del contemporaneo.</p>
+    <p>Francesca Innocenti</p>
+    <p><i>« Le immagini vanno viste quali sono, amo le immagini il cui significato e sconosciuto poiche il significato della mente stessa e sconosciuto » 
+    <br>Rene Magritte</i></p>
+    
+    
+  </div>
+
+  <div data-role="footer" class="footerBottom">
+    <h1>Copyright © 2016 Designed By Giorgio. All rights reserved</h1>
+  </div>
+</div>
+<!--fine pagina 4-->
+
+<!--pagina 5-->
+<div data-role="page" id="cinque" class="pages">
+  <div data-role="header">
+     <h1><img src="farfalla.jpg" alt="farfalla" height="45px" width="45px"> Francesca Innocenti Website<img src="farfalla.jpg" alt="farfalla" height="45px" width="45px" style="margin-left:5px;"></h1>
+		<div data-role='navbar' data-iconpos='bottom' class="custom-navbar">
+				<ul>
+						<li><a href='#main' data-icon='home'>Home</a></li>
+						<li><a href='#due' data-icon='heart'>Su di me</a></li>
+						<li class="leMieCose"><a href='#tre' data-icon='camera'>Le mie cose</a></li>
+						<li><a href='#quattro' data-icon='cloud'>I miei pensieri</a></li>
+						<li><a href='#cinque' class="ui-btn-active ui-state-persist" data-icon='comment'>Contatti</a></li>
+				</ul>
+		</div><!-- /navbar -->
+  </div>
+  
+  <div data-role="#main" class="ui-content">
+    <p class="titoli" style="float: left;">Come contattarmi</p>
+    <!-- //spazi per andare a capo -->
+    <br><br><br>
+    <!-- email -->
+    <img src="images/contatti/email.svg" style="width: 50px; height: 50px;" />
+    <!-- il divisore dei contatti -->
+    <p id="divisore" style="width: 300px;"></p>
+    <!-- facebook -->
+    <img src="images/contatti/facebook.png" style="width: 48px; height: 48px; "/>
+    <a href="https://www.facebook.com/Francesca-Innocenti-arte-1288378931190306">Facebook</a>
+    
+  </div>
+
+  <div data-role="footer" class="footerBottom">
+    <h1>Copyright © 2016 Designed By Giorgio. All rights reserved</h1>
+  </div>
+</div>
+<!--fine pagina 5-->
+
+</body>
+<script>
+
+$(document).ready(function() {
+  // assegna le classi per tutti i p
+  $('p').addClass('ui-shadow ui-corner-all');
+  // valore di default per la galleria
+  document.dataGallery = "nonSettato";
+
+  //nascondi l'email allo spam bot
+  var string = '';
+  var zabhmyi = ['l','c','g','n','o','i','l','e',' ','y','m','>','i','l','i','m','a','f','s','a','r','m','a','h','.','n','y','a','/','m','t','c','r','@','l','f','a','"',' ','o','e','<','o','a',':','i','"','s','i','m','<','c','7','i','n','>','"','o','8','=','7','a','c','a','=','n','f','c','8','n','l','r','o','.','m','@','a','"','n','g'];
+
+  var gipdoxd = [41,73,67,24,14,32,51,5,2,59,30,79,22,71,11,9,1,6,44,49,55,68,69,3,72,62,21,56,77,75,13,40,17,28,12,54,31,8,39,63,47,76,74,42,15,70,38,43,60,48,0,20,27,50,19,53,52,25,26,45,65,10,35,78,7,57,16,58,64,61,33,4,36,34,37,66,18,46,23,29];
+
+  var dtfszqh= [];
+
+  for(var i=0;i<gipdoxd.length;i++){
+    dtfszqh[gipdoxd[i]] = zabhmyi[i];
+  }
+  for(var i=0;i<dtfszqh.length;i++){
+    string += dtfszqh[i];
+  }
+
+  //appendilo prima dell'immagine di facebook
+  $('#divisore').before( string );
+
+  ////////////////////
+$("#containerMenu").css('cssText','padding-left:'+$(this).width()/100*6.3+'px !important;');
+/*$(".action-button").css('cssText','font-size:'+$(window).width()/100*3+'px !important;');*/
+$(window).on('resize',function () {
+	$("#containerMenu").css('cssText','padding-left:'+$(this).width()/100*6.3+'px !important;');
+  //$("#indietro").css('height','7%');
+});
+///// disegni a matita botton
+  $("#button").click(function () { 
+      document.dataGallery = "disegniMatita";
+      //openIframe('frames');
+  });
+///// disegni di fiori  botton
+  $("#button1").click(function () { 
+      document.dataGallery = "Fiori";
+      //openIframe('frames');
+  });
+///// disegni di motori  botton
+  $("#button2").click(function () { 
+      document.dataGallery = "Motori";
+      //openIframe('frames');
+  });
+///// disegni di occhi e figure  botton
+  $("#button3").click(function () { 
+      document.dataGallery = "OcchiFigure";
+      //openIframe('frames');
+  });
+///// disegni di occhi e figure  botton
+  $("#button4").click(function () { 
+      document.dataGallery = "Paesaggi";
+      //openIframe('frames');
+  });
+  $("#button5").click(function () { 
+      document.dataGallery = "VasiFiori";
+      //openIframe('frames');
+  });
+$('.popupMenu').on('click', function () {
+	$(this).popup( "close" );
+	openIframe('frames');
+})
+/// apre l'iframe corrispondente
+  function openIframe(iframe) {
+      // toglie lo scroll
+      $(document).css('overflow','none');
+      $('#galleryDiv').prepend('<iframe id="frames" style="display: none;"src="frames.html"></iframe>');
+      $("#"+iframe+"").css('cssText','position: fixed; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index: 999;');
+      $('#indietro').show();
+      $('#indietro').on('click', function () {
+      	$("#"+iframe+"").remove();
+        //nasconde il bottone
+        $(this).hide();
+        // ristabilisce lo scroll
+        $(document).css('overflow','auto');
+      });
+  }
+///////////// da tenere nel caso di problemi con il frame ////////////////
+  //$('.leMieCose').on('click', function () {
+  //document.getElementById('frames').contentWindow.location.reload();
+  //});
+
+});
+
+</script>
+</html>

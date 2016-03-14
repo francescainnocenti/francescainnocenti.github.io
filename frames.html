@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+		<meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="js/modernizr.custom.70736.js"></script>
+		<noscript><link rel="stylesheet" type="text/css" href="css/noJS.css"/></noscript>
+		<!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
+    </head>
+    <body>
+        <div class="container">
+		
+			<div class="main">
+				<header class="clearfix">
+					<div class="support-note">
+						<span class="note-ie">Spiacenti, solo per browsers moderni.</span>
+					</div>
+					
+				</header>
+				
+				<div class="gamma-container gamma-loading" id="gamma-container">
+
+					<ul id="gammaGalleryId" class="gamma-gallery">
+
+					</ul>
+
+					<div class="gamma-overlay"></div>
+
+					<div id="loadmore" class="loadmore">Altro...</div>
+
+				</div>
+
+			</div><!--/main-->
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="js/jquery.masonry.min.js"></script>
+		<script src="js/jquery.history.js"></script>
+		<script src="js/js-url.min.js"></script>
+		<script src="js/jquerypp.custom.js"></script>
+		<script src="js/gamma.js"></script>
+		<script type="text/javascript">
+			
+			$(function() {
+				
+    			/////
+    			
+				var tempDataArray = [];
+				var folder;
+				switch(parent.top.document.dataGallery) {
+
+					case "VasiFiori":
+					tempDataArray = ['Girasoli','Natura Morta','Natura Morta Con Frutta','Vaso Di Fiori O Natura Morta 40x40','Vaso Di Girasoli'];
+					folder = "VasiFiori";
+					break;
+					case "Paesaggi":
+					tempDataArray = ['Casa In Mezzo Agli Alberi','Cavalli','Mare','Paesaggio','Paesaggio Con Barca','Paesaggio Con Case','Paesaggio Invernale Con Alberi Innevati 15x20','Paesaggio Invernale Con Case 15x20'];
+					folder = "Paesaggi";
+					break;
+					case "OcchiFigure":
+					tempDataArray = ['Il Quarto Stato O La Fiumana','Occhio','Occhio 2'];
+					folder = "OcchiFigure";
+					break;
+					case "Motori":
+					tempDataArray = ['Ferrari','Valentino','Valentino2','Valentino Rossi'];
+					folder = "Motori";
+					break;
+					case "Fiori":
+					tempDataArray = ['Iris 1','Iris 20x30','Orchidea 90x145','Rosa','Rosa Rossa','Rosa 20x30'];
+					folder = "Fiori";
+					break;
+					case "disegniMatita":
+					tempDataArray = ['Cavallo','Cherubino Con Tromba','Donna Con Tamburello','Figura Intera Ragazzo','Frutta2','Platone','Socrate','Viso2'];
+					folder = "disegniMatita";
+					break;
+					default:
+					tempDataArray = ['Cavallo','Cherubino Con Tromba','Donna Con Tamburello','Figura Intera Ragazzo','Frutta2','Platone','Socrate','Viso2'];
+					folder = "disegniMatita";
+				}
+				for(x in tempDataArray) {
+					var tempHtml = '';
+					var trimValue = tempDataArray[x].replace(/ /g,'');
+					tempHtml = "<li><div data-alt="+trimValue+" data-description='<h3>"+tempDataArray[x]+"</h3>' data-max-width='1800' data-max-height='1350'><div data-src='images/"+folder+"/"+trimValue+".jpg' data-min-width='1300'></div><div data-src='images/"+folder+"/"+trimValue+".jpg' data-min-width='1000'></div><div data-src='images/"+folder+"/"+trimValue+".jpg' data-min-width='700'></div><div data-src='images/"+folder+"/"+trimValue+".jpg' data-min-width='300'></div><div data-src='images/"+folder+"/"+trimValue+".jpg' data-min-width='200'></div><div data-src='images/"+folder+"/"+trimValue+".jpg' data-min-width='140'></div><div data-src='images/"+folder+"/"+trimValue+".jpg'></div><noscript><img src='images/"+folder+"/"+trimValue+".jpg' alt="+trimValue+"/></noscript></div></li>";
+
+					$('#gammaGalleryId').append(tempHtml);
+				}
+				//parent.top.document.dataGallery
+				var GammaSettings = {
+						// order is important!
+						viewport : [ {
+							width : 1200,
+							columns : 5
+						}, {
+							width : 900,
+							columns : 4
+						}, {
+							width : 500,
+							columns : 3
+						}, { 
+							width : 320,
+							columns : 2
+						}, { 
+							width : 0,
+							columns : 2
+						} ]
+				};
+				// reload the iframe
+				if(!window.location.hash) {
+				         window.location = window.location + '#loaded';
+				         window.location.reload();
+				         //throw new Error("Esecuzione frame fermata"); 
+     			}
+
+				Gamma.init( GammaSettings);
+
+
+				// Example how to add more items (just a dummy):
+
+				/*var page = 0,
+					items = ['<li><div data-alt="img03" data-description="<h3>Sky high</h3>" data-max-width="1800" data-max-height="1350"><div data-src="images/xxxlarge/3.jpg" data-min-width="1300"></div><div data-src="images/xxlarge/3.jpg" data-min-width="1000"></div><div data-src="images/xlarge/3.jpg" data-min-width="700"></div><div data-src="images/large/3.jpg" data-min-width="300"></div><div data-src="images/medium/3.jpg" data-min-width="200"></div><div data-src="images/small/3.jpg" data-min-width="140"></div><div data-src="images/xsmall/3.jpg"></div><noscript><img src="images/xsmall/3.jpg" alt="img03"/></noscript></div></li><li><div data-alt="img03" data-description="<h3>Sky high</h3>" data-max-width="1800" data-max-height="1350"><div data-src="images/xxxlarge/3.jpg" data-min-width="1300"></div><div data-src="images/xxlarge/3.jpg" data-min-width="1000"></div><div data-src="images/xlarge/3.jpg" data-min-width="700"></div><div data-src="images/large/3.jpg" data-min-width="300"></div><div data-src="images/medium/3.jpg" data-min-width="200"></div><div data-src="images/small/3.jpg" data-min-width="140"></div><div data-src="images/xsmall/3.jpg"></div><noscript><img src="images/xsmall/3.jpg" alt="img03"/></noscript></div></li><li><div data-alt="img03" data-description="<h3>Sky high</h3>" data-max-width="1800" data-max-height="1350"><div data-src="images/xxxlarge/3.jpg" data-min-width="1300"></div><div data-src="images/xxlarge/3.jpg" data-min-width="1000"></div><div data-src="images/xlarge/3.jpg" data-min-width="700"></div><div data-src="images/large/3.jpg" data-min-width="300"></div><div data-src="images/medium/3.jpg" data-min-width="200"></div><div data-src="images/small/3.jpg" data-min-width="140"></div><div data-src="images/xsmall/3.jpg"></div><noscript><img src="images/xsmall/3.jpg" alt="img03"/></noscript></div></li><li><div data-alt="img03" data-description="<h3>Sky high</h3>" data-max-width="1800" data-max-height="1350"><div data-src="images/xxxlarge/3.jpg" data-min-width="1300"></div><div data-src="images/xxlarge/3.jpg" data-min-width="1000"></div><div data-src="images/xlarge/3.jpg" data-min-width="700"></div><div data-src="images/large/3.jpg" data-min-width="300"></div><div data-src="images/medium/3.jpg" data-min-width="200"></div><div data-src="images/small/3.jpg" data-min-width="140"></div><div data-src="images/xsmall/3.jpg"></div><noscript><img src="images/xsmall/3.jpg" alt="img03"/></noscript></div></li><li><div data-alt="img03" data-description="<h3>Sky high</h3>" data-max-width="1800" data-max-height="1350"><div data-src="images/xxxlarge/3.jpg" data-min-width="1300"></div><div data-src="images/xxlarge/3.jpg" data-min-width="1000"></div><div data-src="images/xlarge/3.jpg" data-min-width="700"></div><div data-src="images/large/3.jpg" data-min-width="300"></div><div data-src="images/medium/3.jpg" data-min-width="200"></div><div data-src="images/small/3.jpg" data-min-width="140"></div><div data-src="images/xsmall/3.jpg"></div><noscript><img src="images/xsmall/3.jpg" alt="img03"/></noscript></div></li>']
+
+				function fncallback() {
+
+					$( '#loadmore' ).show().on( 'click', function() {
+
+						++page;
+						var newitems = items[page-1]
+						if( page <= 1 ) {
+							
+							Gamma.add( $( newitems ) );
+
+						}
+						if( page === 1 ) {
+
+							$( this ).remove();
+
+						}
+
+					} );
+
+				}*/
+
+			});
+
+		</script>	
+	</body>
+</html>
