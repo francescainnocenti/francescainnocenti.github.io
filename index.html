@@ -209,7 +209,7 @@ img {
   </div>
 
   <div data-role="footer" class="footerBottom">
-    <h1>Copyright © 2016 Designed By Giorgio. All rights reserved</h1>
+    <h1>Copyright © <span class="year"><span> Designed By Giorgio. All rights reserved</h1>
   </div>
 </div>
 <!--fine pagina principale-->
@@ -250,7 +250,7 @@ img {
   </div>
 
   <div data-role="footer" class="footerBottom">
-    <h1>Copyright © 2016 Designed By Giorgio. All rights reserved</h1>
+    <h1>Copyright © <span class="year"><span> Designed By Giorgio. All rights reserved</h1>
   </div>
 </div>
 <!--fine pagina 2-->
@@ -304,7 +304,7 @@ img {
   </div>
 
   <div data-role="footer" class="footerBottom">
-    <h1>Copyright © 2016 Designed By Giorgio. All rights reserved</h1>
+    <h1>Copyright © <span class="year"><span> Designed By Giorgio. All rights reserved</h1>
   </div>
 </div>
 <!-- fine pagina 3-->
@@ -336,7 +336,7 @@ img {
   </div>
 
   <div data-role="footer" class="footerBottom">
-    <h1>Copyright © 2016 Designed By Giorgio. All rights reserved</h1>
+    <h1>Copyright © <span class="year"><span> Designed By Giorgio. All rights reserved</h1>
   </div>
 </div>
 <!--fine pagina 4-->
@@ -372,7 +372,7 @@ img {
   </div>
 
   <div data-role="footer" class="footerBottom">
-    <h1>Copyright © 2016 Designed By Giorgio. All rights reserved</h1>
+    <h1>Copyright © <span class="year"><span> Designed By Giorgio. All rights reserved</h1>
   </div>
 </div>
 <!--fine pagina 5-->
@@ -444,6 +444,8 @@ $('.popupMenu').on('click', function () {
 	$(this).popup( "close" );
 	openIframe('frames');
 })
+
+$('.year').text(new Date().getFullYear())
 /// apre l'iframe corrispondente
   function openIframe(iframe) {
       // toglie lo scroll
