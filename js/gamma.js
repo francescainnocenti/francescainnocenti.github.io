@@ -731,7 +731,7 @@ var Gamma = (function() {
 		},
 		// triggered when one grid image is clicked
 		_singleview = function() {
-debugger
+
 			var id = $( this ).index();
 			_saveState( id );
 
