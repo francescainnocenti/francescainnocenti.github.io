@@ -7,6 +7,10 @@
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <script>
+	//automatic redirect
+	const host = "francescainnocenti.github.io";
+if ((host == window.location.host) && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
 //chrome fix -->
     $(document).bind('mobileinit',function(){
         $.mobile.changePage.defaults.changeHash = false;
