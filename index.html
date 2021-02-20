@@ -108,6 +108,12 @@ p {
     background-color: white !important;
     color: #946ab1 !important; 
 }
+.action-button.bijouxoggetistica:hover {
+  background:url('images/menu/BijouxOggetistica.jpg') center center no-repeat; 
+    background-size: 125%;
+    background-color: white !important;
+    color: #946ab1 !important; 
+}
 
 .titoli {
   display: inline;
@@ -274,7 +280,7 @@ img {
     <a href="#popupBasicOcchiFigure" data-rel="popup" data-transition="pop"class="action-button shadow animate blue occhi"id="button3" data-button='OcchiFigure'></a>
    	<a href="#popupBasicPaesaggi" data-rel="popup" data-transition="pop"class="action-button shadow animate blue paesaggi"id="button4" data-button='Paesaggi'></a>
     <a href="#popupBasicVasiFiori" data-rel="popup" data-transition="pop"class="action-button shadow animate blue vasifiori"id="button5" data-button='VasiFiori'></a>
-   	
+    <a href="#popupBasicBijouxOggetistica" data-rel="popup" data-transition="pop"class="action-button shadow animate blue bijouxoggetistica"id="button6" data-button='BijouxOggetistica'></a>
 
     <div data-role="popup" id="popupBasicDisegniMatita" class="popupMenu">
 		<p>Disegni a Matita</p>
@@ -293,6 +299,9 @@ img {
 	</div>
   <div data-role="popup" id="popupBasicVasiFiori" class="popupMenu">
     <p>Vasi di Fiori</p>
+  </div>
+  <div data-role="popup" id="popupBasicBijouxOggetistica" class="popupMenu">
+    <p>Bijoux - Oggetistica</p>
   </div>
     </div>
   </div>
@@ -432,6 +441,10 @@ $(window).on('resize',function () {
   });
   $("#button5").click(function () { 
       document.dataGallery = "VasiFiori";
+      //openIframe('frames');
+  });
+  $("#button6").click(function () { 
+      document.dataGallery = "BijouxOggetistica";
       //openIframe('frames');
   });
 $('.popupMenu').on('click', function () {
